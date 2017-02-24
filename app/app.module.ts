@@ -4,6 +4,10 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ShowFoods } from './show-foods.component';
 import { NewFoods } from './new-foods.component';
+import { EditFoods } from './edit-foods.component';
+import { TotalCalories } from './total-calories.component';
+import { DatePipe } from './date.pipe';
+
 
 @NgModule({
   imports: [
@@ -13,7 +17,10 @@ import { NewFoods } from './new-foods.component';
   declarations: [
     AppComponent,
     ShowFoods,
-    NewFoods
+    NewFoods,
+    EditFoods,
+    TotalCalories,
+    DatePipe
   ],
   bootstrap:    [ AppComponent ]
 })

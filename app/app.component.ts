@@ -10,22 +10,45 @@ import { NewFoods } from './new-foods.component'
   selector: 'my-app',
   template: `
   <h1>Calorie Tracking App</h1>
+  <br>
   <show-foods
     [childFoods]="foods"
+    (clickSender)="showDetails($event)"
   ></show-foods>
+  <total-calories
+    [childFoods]="foods"
+  ></total-calories>
   <new-foods
     (newFoodSender)="addFood($event)"
   ></new-foods>
+  <edit-foods
+    [selectedFood]="selectedFood"
+    (doneClickedSender)="finishedEditing()"
+  ></edit-foods>
   `
 })
 
 export class AppComponent {
   public foods: Food[] = [
-    new Food("Hamburger", "Didn't get a soda or cheese on my burger!", 354, 2017, 2, 24, 8),
-    new Food("Fries", "I only ate half of them.", 365, 2017, 2, 24, 10)
+    new Food("Greens", "These are high quality vegetables", 354, 2017, 2, 24, 8),
+    new Food("Brownies", "Properly baked.", 365, 2017, 2, 24, 10),
+    new Food("Mushrooms", "These are magical.", 100, 2017, 2, 24, 12),
+    new Food("Coke", "This is a good drink.", 365, 2017, 2, 24, 14),
+    new Food("Greens", "These are high quality vegetables", 354, 2017, 2, 23, 8),
+    new Food("Brownies", "Properly baked.", 365, 2017, 2, 23, 10),
+    new Food("Mushrooms", "These are magical.", 100, 2017, 2, 22, 12),
+    new Food("Coke", "This is a good drink.", 365, 2017, 2, 22, 14),
   ];
+
   addFood(newFood: Food){
     this.foods.push(newFood);
+  }
+  selectedFood: Food = null;
+  showDetails(clickedFood: Food){
+    this.selectedFood = clickedFood;
+  }
+  finishedEditing(){
+    this.selectedFood = null;
   }
 }
 
